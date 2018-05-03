@@ -1,5 +1,5 @@
 # ampub-gcppubsub
-A Google Cloud Pub/Sub AmPub publisher for [AmPub](https://github.com/amaloy/ampub)
+A Google Cloud Pub/Sub publisher for [AmPub](https://github.com/amaloy/ampub). Envisioned for use as an [ambassador/adaptor](https://kubernetes.io/blog/2015/06/the-distributed-system-toolkit-patterns) container. 
 
 # Message Format
 The AmPub API provides a topic string, request body bytes, and optionally a key string.
