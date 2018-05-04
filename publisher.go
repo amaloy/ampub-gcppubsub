@@ -35,6 +35,7 @@ func (p *pubSubPublisher) Publish(ctx context.Context, topicName string, key str
 		Data: data,
 	}
 	if len(key) > 0 {
+		message.Attributes = make(map[string]string)
 		message.Attributes["key"] = key
 	}
 
