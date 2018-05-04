@@ -59,10 +59,10 @@ func assignTimeoutOverride() {
 	}
 }
 
-func ensureTopics(client *pubsub.Client) (err error) {
+func ensureTopics(client *pubsub.Client) error {
 	envValue := getEnvVar("TOPICS", false)
 	if len(envValue) == 0 {
-		return
+		return nil
 	}
 
 	topics := strings.Split(envValue, ",")
@@ -76,16 +76,16 @@ func ensureTopics(client *pubsub.Client) (err error) {
 		topic := client.Topic(t)
 		exists, err := topic.Exists(ctx)
 		if err != nil {
-			break
+			return err
 		}
 
 		// Create topic if necessary
 		if !exists {
 			_, err = client.CreateTopic(ctx, t)
 			if err != nil {
-				break
+				return err
 			}
 		}
 	}
-	return
+	return nil
 }
